@@ -9,5 +9,6 @@
 
 ## 使用方法
 
-用Start Server(JRE).cmd打开服务器，即使你安装了JDK。
-在服务器运行时会产生日志文件：log***.log，用Delete Log.cmd清除日志文件。
+用Start Server(JRE).cmd打开服务器，即使你安装了JDK。  
+在服务器运行时，访问`http://127.0.0.1`或`http://<你的IP地址>`即可访问OJ。  
+在服务器运行时会产生日志文件：log***.log，用Delete Log.cmd清除日志文件。  
