@@ -5,7 +5,7 @@
 
 ## 下载方法
 
-点击![此链接](https://github.com/qq1010903229/ojserver/archive/master.zip)。
+点击[此链接](https://github.com/qq1010903229/ojserver/archive/master.zip)。
 
 ## 使用方法
 
