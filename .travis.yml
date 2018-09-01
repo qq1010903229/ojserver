@@ -4,4 +4,5 @@ compiler:
 jdk:
   - oraclejdk8
  
-script: javac Server.java
+script:
+  - make -f "Makefile-l" Server.class
