@@ -1,6 +1,7 @@
 language: java
-
+compiler:
+   - jdk
 jdk:
   - oraclejdk8
  
-script:javac Server.java
+script: javac Server.java
