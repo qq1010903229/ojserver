@@ -23,9 +23,9 @@ public class Server{
 		String e=new String("");
 		try{
 			while (!e.equalsIgnoreCase("quit")){
-				System.out.println("输入quit代表结束服务器");
+				System.out.println("Input 'quit' to terminate the server.");
 				print.print("[OUTPUT]");
-				print.println("输入quit代表结束服务器");
+				print.println("Input 'quit' to terminate the server.");
 				byte[] h=new byte[1024];
 				int n=System.in.read(h);
 				e=new String(h,0,n-2);
