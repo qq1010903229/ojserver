@@ -5,6 +5,4 @@ jdk:
   - oraclejdk8
  
 script:
-  - javac
-  - javac Server.java
-  - make
+  - make -f "Makefile-l" Server.class
