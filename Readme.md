@@ -3,7 +3,7 @@
 这是一个用Java制作的OJ服务器。  
 在这里，所有HTML文件均带有HTTP文件头。  
 
-![Travis CI](https://api.travis-ci.org/qq1010903229/ojserver.svg?branch=master)
+[![Travis CI](https://api.travis-ci.org/qq1010903229/ojserver.svg?branch=master)](https://travis-ci.org/qq1010903229/ojserver)
 
 ## 下载方法
 
