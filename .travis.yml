@@ -5,4 +5,4 @@ jdk:
   - oraclejdk8
  
 script:
-  - make -f "Makefile-l" all
+  - make -f "Travis.mak" all

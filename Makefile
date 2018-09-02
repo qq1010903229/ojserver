@@ -1,6 +1,6 @@
 # This file is for Windows.
 
-all: Server.class oj/ready.exe oj/submit.exe
+all: Server.class oj/submit.exe
 
 Server.class: Server.java
 	javac Server.java
