@@ -6,3 +6,4 @@ jdk:
  
 script:
   - make -f "Travis.mak" all
+  - java oj.test

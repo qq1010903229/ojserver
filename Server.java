@@ -1,6 +1,7 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
+import oj.oj;
 public class Server{
 	public static PrintStream print;
 	static{
@@ -184,7 +185,7 @@ class ThreadA extends Thread{
 						fo.write(h2,0,h2.length);
 						fo.flush();
 						fo.close();
-						new ProcessBuilder("oj\\submit.exe").start();
+						oj.submit();
 						e2="HTTP/1.1 404 Not Found\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:13\r\n\r\n404 Not Found";
 						h2=e2.getBytes("UTF-8");
 						o.write(h2,0,h2.length);
