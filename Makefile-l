@@ -5,8 +5,5 @@ all: Server.class oj/ready.o oj/submit.o
 Server.class: Server.java
 	javac Server.java
 
-oj/ready.o: oj/ready.cpp
-	gcc oj/ready.cpp -o oj/ready.o -c
-
 oj/submit.o: oj/submit.cpp
 	gcc oj/submit.cpp -o oj/submit.o -c
