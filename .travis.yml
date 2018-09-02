@@ -15,7 +15,10 @@ install:
 script:
   - mvn test -B
   - make -f "Travis.mak" all
-  
+ 
+ 
+after_success:
+  - mvn clean test jacoco:report coveralls:report
 # script-orig:
 #  - make -f "Travis.mak" all
 #  - java oj.test
