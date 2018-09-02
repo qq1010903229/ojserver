@@ -11,14 +11,15 @@ install:
    - mkdir -p src/test/resources
    - mkdir -p target
    - cp -r com src/main/java
+   - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
 
 script:
   - mvn test -B
   - make -f "Travis.mak" all
  
  
-after_success:
-  - mvn clean test cobertura:cobertura coveralls:report
+# after_success:
+#   - mvn clean test cobertura:cobertura coveralls:report
 # script-orig:
 #  - make -f "Travis.mak" all
 #  - java oj.test
