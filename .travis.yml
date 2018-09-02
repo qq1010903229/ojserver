@@ -4,6 +4,6 @@ compiler:
 jdk:
   - oraclejdk8
  
-script:
-  - make -f "Travis.mak" all
-  - java oj.test
+# script:
+#  - make -f "Travis.mak" all
+#  - java oj.test
