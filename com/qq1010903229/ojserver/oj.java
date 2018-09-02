@@ -1,4 +1,4 @@
-package oj;
+package com.qq1010903229.ojserver;
 import java.io.IOException;
 import java.util.*;
 public class oj{
