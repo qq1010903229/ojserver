@@ -7,12 +7,12 @@ http://maven.apache.org/maven-v4_0_0.xsd">
   <artifactId>ojserver</artifactId>
   <version>1.0.0</version>
     <name>ojserver</name>
-  <build><plugin>
+  <build><plugins><plugin>
     <groupId>org.eluder.coveralls</groupId>
     <artifactId>coveralls-maven-plugin</artifactId>
     <version>4.3.0</version>
     <configuration>
         <repoToken>ck4KjiOVUnVDPUMXbBWNRjUtK1zHXHjWy</repoToken>
     </configuration>
-</plugin></build>
+</plugin></plugins></build>
 </project>
