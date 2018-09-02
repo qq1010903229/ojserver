@@ -4,6 +4,18 @@ compiler:
 jdk:
   - oraclejdk8
  
-# script:
+install:
+   - mkdir -p src/main/java
+   - mkdir -p src/main/resources
+   - mkdir -p src/test/java
+    - mkdir -p src/test/resources
+    - mkdir -p target
+   - cp -r com src/main/java
+
+script:
+  - mvn test -B
+  - make -f "Travis.mak" all
+  
+# script-orig:
 #  - make -f "Travis.mak" all
 #  - java oj.test
