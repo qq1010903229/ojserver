@@ -1,6 +1,6 @@
 # OJ Java Server （只适用于Windows）
 
-这是一个用Java制作的OJ服务器。  
+这是一个用Java和C++制作的OJ服务器。  
 在这里，所有HTML文件均带有HTTP文件头。  
 
 [![Travis CI](https://api.travis-ci.org/qq1010903229/ojserver.svg?branch=master)](https://travis-ci.org/qq1010903229/ojserver)
