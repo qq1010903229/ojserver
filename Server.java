@@ -66,23 +66,19 @@ class ThreadA extends Thread{
 				s=ss.accept();
 				i=s.getInputStream();
 				o=s.getOutputStream();
-				byte[] h=new byte[131072];
+				byte[] h=new byte[1048576];
 				int n=i.read(h);
 				if(n>100000){
 					String e2="HTTP/1.1 414 Request Header Too LARGE!\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:29\r\n\r\n414 Request Header Too LARGE!";
 					byte[] h2=e2.getBytes("UTF-8");
-					Thread.sleep(1000);
-					for(int i=0;i<h2.length;i++){
-						o.write(h2,i,1);
-						o.flush();
-						Thread.sleep(30);
-					}
+					o.write(h2,0,h2.length);
+					o.flush();
 					i.close();
 					o.close();
 					s.close();
 					continue;
 				}
-				String e=new String(h,0,n-2);
+				String e=new String(h,0,n);
 				System.out.println(e);
 				Server.print.print("[RESPONSE]");
 				Server.print.println(e);
@@ -109,10 +105,109 @@ class ThreadA extends Thread{
 					o.write(h2,0,len);
 					o.flush();
 				}else if(e.startsWith("POST")){
-					String e2="HTTP/1.1 405 Method Not Allowed\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:22\r\n\r\n405 Method Not Allowed";
-					byte[] h2=e2.getBytes("UTF-8");
-					o.write(h2,0,h2.length);
-					o.flush();
+					String e2;
+					boolean pqst=true;
+					while(pqst){
+						try{
+							e2=e.split("\r\n\r\n")[1];
+							pqst=false;
+						}catch(ArrayIndexOutOfBoundsException exception){
+							int n1=0;
+							n1=i.read(h,n,65536);
+							if(n1==-1){
+								i.close();
+								o.close();
+								s.close();
+								break;
+							}
+							if(n1>0)n+=n1;
+							e=new String(h,0,n);
+						}
+						
+					}
+					if(pqst)continue;
+					if(e.split("\r\n\r\n")[0].toLowerCase().indexOf("content-length:")==-1){
+						String e5="HTTP/1.1 411 Length Required\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:19\r\n\r\n411 Length Required";
+						byte[] h5=e5.getBytes("UTF-8");
+						o.write(h5,0,h5.length);
+						o.flush();
+						i.close();
+						o.close();
+						s.close();
+						continue;
+					}
+					int len1;
+					try{
+						len1=Integer.parseInt(e.split("\r\n\r\n")[0].toLowerCase().split("content-length:")[1].trim().split("\r\n")[0]);
+					}catch(NumberFormatException exception){
+						String e5="HTTP/1.1 411 Length Required\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:19\r\n\r\n411 Length Required";
+						byte[] h5=e5.getBytes("UTF-8");
+						o.write(h5,0,h5.length);
+						o.flush();
+						i.close();
+						o.close();
+						s.close();
+						continue;
+					}
+					if(len1>10000){
+						String e5="HTTP/1.1 413 Request Entity Too Large\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:28\r\n\r\n413 Request Entity Too Large";
+						byte[] h5=e5.getBytes("UTF-8");
+						o.write(h5,0,h5.length);
+						o.flush();
+						i.close();
+						o.close();
+						s.close();
+						continue;
+					}
+					e=new String(h,0,n);
+					pqst=e.split("\r\n\r\n")[1].length()<len1;
+					while(e.split("\r\n\r\n")[1].length()<len1){
+						pqst=true;
+						int n1=0;
+						n1=i.read(h,n,65536);
+						if(n1==-1){
+							i.close();
+							o.close();
+							s.close();
+							break;
+						}
+						if(n1>0)n+=n1;
+						e=new String(h,0,n);
+						pqst=false;
+					}
+					if(pqst)continue;
+					e2=e.split(" ")[1].split("\\?")[0];
+					if(e2.equals("/submit")){
+						e2=e.split("\r\n\r\n")[1];
+						byte[] h2=e2.getBytes("UTF-8");
+						FileOutputStream fo=new FileOutputStream(new File("oj\\temp\\submitform"));
+						fo.write(h2,0,h2.length);
+						fo.flush();
+						fo.close();
+						new ProcessBuilder("oj\\submit.exe").start();
+						e2="HTTP/1.1 404 Not Found\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:13\r\n\r\n404 Not Found";
+						h2=e2.getBytes("UTF-8");
+						o.write(h2,0,h2.length);
+						o.flush();
+					}else{
+						e=new String(h,0,n);
+						e2="HTTP/1.1 405 Method Not Allowed\r\nServer:Java/0\r\nContent-Type:text/plain\r\n\r\n405 Method Not Allowed (POST)\r\n\r\nURL:";
+						byte[] h2=e2.getBytes("UTF-8");
+						o.write(h2,0,h2.length);
+						o.flush();
+						e2=e.split(" ")[1].split("\\?")[0];
+						h2=e2.getBytes("UTF-8");
+						o.write(h2,0,h2.length);
+						o.flush();
+						e2="\r\n\r\nForm:";
+						h2=e2.getBytes("UTF-8");
+						o.write(h2,0,h2.length);
+						o.flush();
+						e2=e.split("\r\n\r\n")[1];
+						h2=e2.getBytes("UTF-8");
+						o.write(h2,0,h2.length);
+						o.flush();
+					}
 				}else if(e.startsWith("GET")){
 					try{
 						String[] e1=e.split(" ");

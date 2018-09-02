@@ -1,0 +1,49 @@
+HTTP/1.1 200 OK
+Server: Java/0
+Content-Length: 1077
+Content-Type: text/html
+
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>Online Judge</title>
+<style>
+a{
+color:#009900;
+text-decoration:none;
+}
+a.current{
+color:#cc9900;
+}
+a.title{
+color:#9933ff;
+}
+a.title.current{
+color:#cc9900;
+}
+</style>
+</head><body>
+<a href="/index.html" class="title">Online Judge</a>&nbsp;&nbsp;&nbsp;
+<a href="/problems.html" class="current">题目</a>&nbsp;&nbsp;&nbsp;
+<hr>
+<h2>提交题目 <span id="pid00"></span></h2>
+<form method="POST" action="/submit">
+<input id="pid01" name="pid" type="hidden"></input>
+<textarea name="code"></textarea>
+<br>
+<input type="submit" value="开始评测！"></input>
+</form>
+<script>
+var Script1_a=document.location.href;
+var Script1_b=Script1_a.indexOf('pid=');
+if(Script1_b==-1){
+	document.location.href='/';
+}
+var Script1_c=Script1_a.slice(Script1_b+4);
+var Script1_d=Script1_c.indexOf('&');
+if(Script1_d!=-1){
+	Script1_c=Script1_c.slice(0,Script1_d);
+}
+document.getElementById('pid00').innerHTML=Script1_c;
+document.getElementById('pid01').value=Script1_c;
+</script>
+</body></html>
