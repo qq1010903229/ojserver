@@ -7,9 +7,9 @@ jdk:
 install:
    - mkdir -p src/main/java
    - mkdir -p src/main/resources
-   - mkdir -p src/test/java
-    - mkdir -p src/test/resources
-    - mkdir -p target
+   - mkdir -p src/test/java/com/qq1010903229/ojserver
+   - mkdir -p src/test/resources
+   - mkdir -p target
    - cp -r com src/main/java
 
 script:

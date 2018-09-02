@@ -14,27 +14,5 @@ http://maven.apache.org/maven-v4_0_0.xsd">
     <configuration>
         <repoToken>ck4KjiOVUnVDPUMXbBWNRjUtK1zHXHjWy</repoToken>
     </configuration>
-</plugin><plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>cobertura-maven-plugin</artifactId>
-    <version>2.7</version>
-    <configuration>
-        <format>xml</format>
-        <maxmem>256m</maxmem>
-        <!-- aggregated reports for multi-module projects -->
-        <aggregate>true</aggregate>
-    </configuration>
-</plugin></plugins></build><reporting>
-	<plugins>
-		<plugin>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>cobertura-maven-plugin</artifactId>
-			<configuration>
-				<formats>
-					<format>xml</format>
-				</formats>
-			</configuration>
-		</plugin>
-	</plugins>
-</reporting>
+</plugin></plugins></build>
 </project>
