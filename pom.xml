@@ -7,34 +7,4 @@ http://maven.apache.org/maven-v4_0_0.xsd">
   <artifactId>ojserver</artifactId>
   <version>1.0.0</version>
     <name>ojserver</name>
-  <build><plugins><plugin>
-    <groupId>org.eluder.coveralls</groupId>
-    <artifactId>coveralls-maven-plugin</artifactId>
-    <version>4.3.0</version>
-    <configuration>
-        <repoToken>ck4KjiOVUnVDPUMXbBWNRjUtK1zHXHjWy</repoToken>
-    </configuration>
-</plugin><plugin>
-    <groupId>org.codehaus.mojo</groupId>
-    <artifactId>cobertura-maven-plugin</artifactId>
-    <version>2.7</version>
-    <configuration>
-        <format>xml</format>
-        <maxmem>256m</maxmem>
-        <!-- aggregated reports for multi-module projects -->
-        <aggregate>true</aggregate>
-    </configuration>
-</plugin></plugins></build><reporting>
-	<plugins>
-		<plugin>
-			<groupId>org.codehaus.mojo</groupId>
-			<artifactId>cobertura-maven-plugin</artifactId>
-			<configuration>
-				<formats>
-					<format>xml</format>
-				</formats>
-			</configuration>
-		</plugin>
-	</plugins>
-</reporting>
 </project>
