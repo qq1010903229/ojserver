@@ -1,7 +1,8 @@
+package com.qq1010903229.ojserver;
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import oj.oj;
+import com.qq1010903229.ojserver.oj;
 public class Server{
 	public static PrintStream print;
 	static{
