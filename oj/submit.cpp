@@ -22,6 +22,7 @@ int main(){
 	ofstream code("oj\\temp\\submitcode");
 	ofstream lang("oj\\temp\\submitlang");
 	ofstream pid("oj\\temp\\submitpid");
+	ofstream res("oj\\temp\\submitres");
 	form>>formdata;
 	char* t=strstr(formdata,"pid=");
 	if(t==NULL){
@@ -59,4 +60,12 @@ int main(){
 		}
 		t++;
 	}
+	code.close();
+	lang.close();
+	pid.close();
+	int aaa=system("oj\\submit_1.cmd");
+	if(aaa==2)res<<"Language Error";
+	else if(aaa==3)res<<"Compile Error";
+	else if(aaa==0)res<<"Accepted";
+	else res<<"Unknown Error";
 }
