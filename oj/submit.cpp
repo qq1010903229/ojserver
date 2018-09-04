@@ -67,6 +67,10 @@ int main(){
 	int aaa=system("oj\\submit_1.cmd");
 	if(aaa==2)res<<"Language Error";
 	else if(aaa==3)res<<"Compile Error";
-	else if(aaa==0)res<<"Accepted";
+	else if(aaa==4)res<<"PID Error";
+	else if(aaa==0){
+		res.close();
+		system("copy oj\\temp\\submitres1 oj\\temp\\submitres");
+	}
 	else res<<"Unknown Error";
 }
