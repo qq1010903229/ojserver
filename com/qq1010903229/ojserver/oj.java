@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.*;
 public class oj{
 	public static void submit() throws IOException{
-		new ProcessBuilder("oj\\submit.exe").start();
+		Process p=new ProcessBuilder("oj\\submit.exe").start();
+		try{p.waitFor();}catch (InterruptedException e){}
 	}
 }

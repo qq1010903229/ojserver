@@ -182,14 +182,25 @@ class ThreadA extends Thread{
 					if(e2.equals("/submit")){
 						e2=e.split("\r\n\r\n")[1];
 						byte[] h2=e2.getBytes("UTF-8");
+						byte[] h3=new byte[64];
 						FileOutputStream fo=new FileOutputStream(new File("oj\\temp\\submitform"));
 						fo.write(h2,0,h2.length);
 						fo.flush();
 						fo.close();
 						oj.submit();
-						e2="HTTP/1.1 404 Not Found\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:13\r\n\r\n404 Not Found";
+						FileInputStream fi=new FileInputStream(new File("oj\\temp\\submitres"));
+						int nn=fi.read(h3);
+						e2="HTTP/1.1 200 OK\r\nServer:Java/0\r\nContent-Type:text/plain\r\nContent-Length:";
 						h2=e2.getBytes("UTF-8");
 						o.write(h2,0,h2.length);
+						e2=String.valueOf(nn);
+						h2=e2.getBytes("UTF-8");
+						o.write(h2,0,h2.length);
+						e2="\r\n\r\n";
+						h2=e2.getBytes("UTF-8");
+						o.write(h2,0,h2.length);
+						o.flush();
+						o.write(h3,0,nn);
 						o.flush();
 					}else{
 						e=new String(h,0,n);
