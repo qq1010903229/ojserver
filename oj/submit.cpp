@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
+#include <cstdlib>
 using namespace std;
 char formdata[20000];
 int unescape1(char* t){
@@ -20,15 +21,32 @@ int unescape1(char* t){
 int main(){
 	ifstream form("oj\\temp\\submitform");
 	ofstream code("oj\\temp\\submitcode");
+	ofstream lang("oj\\temp\\submitlang");
 	ofstream pid("oj\\temp\\submitpid");
+	ofstream res("oj\\temp\\submitres");
 	form>>formdata;
 	char* t=strstr(formdata,"pid=");
+	if(t==NULL){
+		return 1;
+	}
 	t+=4;
 	while(*t>='0'&&*t<='9'){
 		pid<<*t;
 		t++;
 	}
+	t=strstr(formdata,"lang=");
+	if(t==NULL){
+		return 1;
+	}
+	t+=5;
+	while(*t>='0'&&*t<='9'){
+		lang<<*t;
+		t++;
+	}
 	t=strstr(formdata,"code=");
+	if(t==NULL){
+		return 1;
+	}
 	t+=5;
 	while(*t!='\0'){
 		if(*t=='%'){
@@ -43,4 +61,12 @@ int main(){
 		}
 		t++;
 	}
+	code.close();
+	lang.close();
+	pid.close();
+	int aaa=system("oj\\submit_1.cmd");
+	if(aaa==2)res<<"Language Error";
+	else if(aaa==3)res<<"Compile Error";
+	else if(aaa==0)res<<"Accepted";
+	else res<<"Unknown Error";
 }
