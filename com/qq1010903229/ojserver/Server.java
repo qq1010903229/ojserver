@@ -182,7 +182,7 @@ class ThreadA extends Thread{
 					if(e2.equals("/submit")){
 						e2=e.split("\r\n\r\n")[1];
 						byte[] h2=e2.getBytes("UTF-8");
-						byte[] h3=new byte[64];
+						byte[] h3=new byte[1000000];
 						FileOutputStream fo=new FileOutputStream(new File("oj\\temp\\submitform"));
 						fo.write(h2,0,h2.length);
 						fo.flush();
